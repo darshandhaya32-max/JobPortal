@@ -6,7 +6,6 @@ require("dotenv").config();
 
 const app = express();
 
-// CORS configuration
 app.use(
   cors({
     origin: [
@@ -19,17 +18,13 @@ app.use(
   })
 );
 
-// Enable preflight across all routes
 app.options("*", cors());
 
-// Parse JSON and urlencoded requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// API routes
 app.use("/api", router);
 
-// Initialize database and start server
 db.initialize()
   .then(() => {
     console.log("Database Connected");
