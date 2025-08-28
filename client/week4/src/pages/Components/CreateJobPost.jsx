@@ -32,7 +32,6 @@ const CreateJobPost = () => {
 
     const Postitem = async () => {
       try {
-        const token = localStorage.getItem("token");
         let userId = null;
   if (token) {
     try {

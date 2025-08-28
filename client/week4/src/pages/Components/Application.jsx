@@ -35,7 +35,6 @@ const Application = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem("token");
     if (!token) {
       toast.error("❌ You must be logged in to submit the application");
       return;

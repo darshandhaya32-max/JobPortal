@@ -8,7 +8,7 @@ const Home = () => {
   const [data, setData] = useState([]);
   const apiUrl = import.meta.env.VITE_API_URL;
   const location = useLocation(); 
-
+const token = localStorage.getItem("token");
   const fetchitem = async () => {
     try {
       const res = await axios.get(`${apiUrl}/home`);
@@ -28,7 +28,7 @@ const Home = () => {
     const Postdelete = async () => {
       try {
         if (conformation) {
-          const token = localStorage.getItem("token");
+          
           await axios.delete(`${apiUrl}/delete/${id}`, {
             headers: {
               Authorization: `Bearer ${token}`,

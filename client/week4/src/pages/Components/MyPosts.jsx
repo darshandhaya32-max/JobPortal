@@ -8,11 +8,10 @@ const MyPosts = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
   const apiUrl = import.meta.env.VITE_API_URL;
-
+      const token = localStorage.getItem("token")
   useEffect(() => {
     const fetchitem = async () => {
       try {
-        const token = localStorage.getItem("token")
         const res = await axios.get(`${apiUrl}/myposts/${id}`,{
         headers: {
           Authorization: `Bearer ${token}`,
@@ -32,7 +31,6 @@ const MyPosts = () => {
     const Postdelete = async () => {
       try {
         if (conformation) {
-          const token = localStorage.getItem("token");
           const result = await axios.delete(`${apiUrl}/delete/${id}`, {
             headers: {
               Authorization: `Bearer ${token}`,

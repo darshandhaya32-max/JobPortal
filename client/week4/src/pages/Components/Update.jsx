@@ -15,10 +15,11 @@ const Update = () => {
   const apiUrl = import.meta.env.VITE_API_URL;
   const [message, setMessage] = useState("");
   const { id } = useParams();
+   const token = localStorage.getItem("token");
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const token = localStorage.getItem("token");
+       
       
         const res = await axios.get(`${apiUrl}/home/${id}`, {
           headers: {
@@ -32,7 +33,6 @@ const Update = () => {
     };
     fetchPost();
   }, [id]);
-   const token = localStorage.getItem("token");
     let userName = null;
     let userId = null;
     if (token) {
@@ -51,7 +51,6 @@ const Update = () => {
 
     const Postitem = async () => {
       try {
-        const token = localStorage.getItem("token");
         const res = await axios.put(
           `${apiUrl}/edit/${id}`,
           {
