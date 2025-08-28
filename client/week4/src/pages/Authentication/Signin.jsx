@@ -13,7 +13,7 @@ const Signin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-              const apiUrl = process.env.REACT_APP_API_URL;
+      const apiUrl = process.env.REACT_APP_API_URL;
 
       const result = await axios.post(`${apiUrl}/signin`, {
         username: signinData.username,

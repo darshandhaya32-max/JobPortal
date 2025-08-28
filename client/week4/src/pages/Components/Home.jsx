@@ -17,7 +17,7 @@ const Home = () => {
       }
     };
     fetchitem();
-  }, [data]);
+  }, []);
 
   
   const handleDelete = (id) => {

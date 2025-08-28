@@ -12,6 +12,8 @@ const CreateJobPost = () => {
     content: "",
     author: "",
   });
+    const apiUrl = process.env.REACT_APP_API_URL;
+
  const token = localStorage.getItem("token");
   let userName = null;
   if (token) {
@@ -42,7 +44,7 @@ const CreateJobPost = () => {
     }
   }
         const res = await axios.post(
-          "https://jobportal-j9ad.onrender.com/api/posts",
+          `${apiUrl}/posts`,
           {
             title: post.title,
             content: post.content,
