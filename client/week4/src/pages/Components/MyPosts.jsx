@@ -1,18 +1,23 @@
-import React, { useState,useEffect } from 'react'
-import DisplayForm from './Forms/DisplayForm'
-import { useParams } from 'react-router';
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import React, { useState, useEffect } from "react";
+import DisplayForm from "./Forms/DisplayForm";
+import { useParams } from "react-router";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const MyPosts = () => {
-     const [data, setData] = useState([]);
-     const {id} = useParams();
-             const apiUrl = import.meta.env.VITE_API_URL;
+  const [data, setData] = useState([]);
+  const { id } = useParams();
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchitem = async () => {
       try {
-        const res = await axios.get(`${apiUrl}/myposts/${id}`);
+        const token = localStorage.getItem("token")
+        const res = await axios.get(`${apiUrl}/myposts/${id}`,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
         setData(res.data || []);
       } catch (error) {
         console.error("❌ Fetch error:", error.message);
@@ -28,14 +33,11 @@ const MyPosts = () => {
       try {
         if (conformation) {
           const token = localStorage.getItem("token");
-          const result = await axios.delete(
-            `${apiUrl}/delete/${id}`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
+          const result = await axios.delete(`${apiUrl}/delete/${id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
 
           setData((prev) => prev.filter((post) => post.id !== id));
           toast.success("Post deleted successfully!");
@@ -49,9 +51,9 @@ const MyPosts = () => {
   };
   return (
     <div>
-         <DisplayForm handleDelete={handleDelete} data={data} />
+      <DisplayForm handleDelete={handleDelete} data={data} />
     </div>
-  )
-}
+  );
+};
 
-export default MyPosts
+export default MyPosts;
