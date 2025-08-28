@@ -12,7 +12,7 @@ const CreateJobPost = () => {
     content: "",
     author: "",
   });
-    const apiUrl = import.meta.env.VITE_API_URLL;
+    const apiUrl = import.meta.env.VITE_API_URL;
 
  const token = localStorage.getItem("token");
   let userName = null;
