@@ -102,7 +102,7 @@ const Signin = () => {
           >
             <option value="Select an option">Select an Option</option>
             <option value="Recruiter">Recruiter</option>
-            <option value="Appicants">Applicant</option>
+            <option value="Applicants">Applicant</option>
           </select>
         </div>
         <button
