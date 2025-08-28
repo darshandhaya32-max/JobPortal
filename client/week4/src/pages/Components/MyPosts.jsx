@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 const MyPosts = () => {
      const [data, setData] = useState([]);
      const {id} = useParams();
-             const apiUrl = process.env.REACT_APP_API_URL;
+             const apiUrl = process.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchitem = async () => {
