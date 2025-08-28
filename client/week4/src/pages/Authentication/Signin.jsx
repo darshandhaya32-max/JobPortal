@@ -13,7 +13,9 @@ const Signin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await axios.post("https://jobportal-j9ad.onrender.com/api/signin", {
+              const apiUrl = process.env.REACT_APP_API_URL;
+
+      const result = await axios.post(`${apiUrl}/signin`, {
         username: signinData.username,
         email: signinData.email,
         password: signinData.password,

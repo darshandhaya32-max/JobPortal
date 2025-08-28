@@ -13,11 +13,13 @@ const Application = () => {
     qualification: "",
     yearOfPassing: "",
   });
+          const apiUrl = process.env.REACT_APP_API_URL;
+
   const navigate = useNavigate();
   useEffect(() => {
     const fetchsingle = async () => {
       try {
-        const result = await axios.get(`https://jobportal-j9ad.onrender.com/api/home/${id}`);
+        const result = await axios.get(`${apiUrl}/home/${id}`);
         setSinglePost(result.data || []);
       } catch (error) {
         console.error("❌ Fetch error:", error.message);
@@ -45,7 +47,7 @@ const Application = () => {
 
     try {
       const res = await axios.post(
-        "https://jobportal-j9ad.onrender.com/api/application",
+        `${apiUrl}/application`,
         {
           firstname: apply.firstName,
           lastname: apply.lastName,

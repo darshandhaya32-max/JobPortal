@@ -12,14 +12,15 @@ const Update = () => {
     content: "",
     author: "",
   });
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [message, setMessage] = useState("");
   const { id } = useParams();
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`https://jobportal-j9ad.onrender.com/api/home/${id}`, {
+      
+        const res = await axios.get(`${apiUrl}/home/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -52,7 +53,7 @@ const Update = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.put(
-          `https://jobportal-j9ad.onrender.com/api/edit/${id}`,
+          `${apiUrl}/edit/${id}`,
           {
             title: post.title,
             content: post.content,

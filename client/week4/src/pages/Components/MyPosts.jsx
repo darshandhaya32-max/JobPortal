@@ -7,10 +7,12 @@ import { toast } from 'react-toastify';
 const MyPosts = () => {
      const [data, setData] = useState([]);
      const {id} = useParams();
+             const apiUrl = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     const fetchitem = async () => {
       try {
-        const res = await axios.get(`https://jobportal-j9ad.onrender.com/api/myposts/${id}`);
+        const res = await axios.get(`${apiUrl}/myposts/${id}`);
         setData(res.data || []);
       } catch (error) {
         console.error("❌ Fetch error:", error.message);
@@ -27,7 +29,7 @@ const MyPosts = () => {
         if (conformation) {
           const token = localStorage.getItem("token");
           const result = await axios.delete(
-            `https://jobportal-0q8q.onrender.com/api/delete/${id}`,
+            `${apiUrl}/delete/${id}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,

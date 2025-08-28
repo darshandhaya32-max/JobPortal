@@ -5,10 +5,12 @@ import DisplayForm from "./Forms/DisplayForm";
 
 const Home = () => {
   const [data, setData] = useState([]);
+          const apiUrl = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     const fetchitem = async () => {
       try {
-        const res = await axios.get("https://jobportal-0q8q.onrender.com/api/home");
+        const res = await axios.get(`${apiUrl}/home`);
         setData(res.data || []);
       } catch (error) {
         console.error("❌ Fetch error:", error.message);
@@ -27,7 +29,7 @@ const Home = () => {
         if (conformation) {
           const token = localStorage.getItem("token");
           const result = await axios.delete(
-            `https://jobportal-j9ad.onrender.com/api/delete/${id}`,
+            `${apiUrl}/delete/${id}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
