@@ -1,11 +1,6 @@
-import path from "path";
-import { fileURLToPath } from "url";
-import { DataSource } from "typeorm";
-import dotenv from "dotenv";
-dotenv.config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const path = require("path");
+const { DataSource } = require("typeorm");
+require("dotenv").config();
 
 const db = new DataSource({
   type: "postgres",
@@ -13,7 +8,7 @@ const db = new DataSource({
   ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
   logging: false,
   synchronize: true,
-  entities: [path.join(__dirname, "..", "entities/**/*.js")],
+  entities: [path.join(__dirname, "..", "entities/**/*.js")], // __dirname works in CJS
 });
 
-export default db;
+module.exports = db;
