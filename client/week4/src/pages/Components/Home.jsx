@@ -2,24 +2,25 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import DisplayForm from "./Forms/DisplayForm";
+import { useLocation } from "react-router-dom";
 
 const Home = () => {
   const [data, setData] = useState([]);
-    const apiUrl = import.meta.env.VITE_API_URL;
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const location = useLocation(); 
 
+  const fetchitem = async () => {
+    try {
+      const res = await axios.get(`${apiUrl}/home`);
+      setData(res.data || []);
+    } catch (error) {
+      console.error("❌ Fetch error:", error.message);
+    }
+  };
   useEffect(() => {
-    const fetchitem = async () => {
-      try {
-        const res = await axios.get(`${apiUrl}/home`);
-        setData(res.data || []);
-      } catch (error) {
-        console.error("❌ Fetch error:", error.message);
-      }
-    };
     fetchitem();
-  }, [data]);
+  }, [location.pathname]); 
 
-  
   const handleDelete = (id) => {
     const conformation = window.confirm(
       "Do you Really whant to Delete this Post ⁉️"
@@ -28,14 +29,11 @@ const Home = () => {
       try {
         if (conformation) {
           const token = localStorage.getItem("token");
-          const result = await axios.delete(
-            `${apiUrl}/delete/${id}`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
+          await axios.delete(`${apiUrl}/delete/${id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
 
           setData((prev) => prev.filter((post) => post.id !== id));
           toast.success("Post deleted successfully!");
@@ -47,6 +45,7 @@ const Home = () => {
     };
     Postdelete();
   };
+
   return (
     <div>
       <DisplayForm handleDelete={handleDelete} data={data} />
