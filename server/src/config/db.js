@@ -1,16 +1,21 @@
-const path = require("path");
-const { DataSource } = require("typeorm");
+
+
+
+import path from "path";
+import { DataSource } from "typeorm";
+import dotenv from "dotenv";
+dotenv.config();
+
 
 const db = new DataSource({
   type: "postgres",
-  host: "localhost",
-  port: 5432,
-  username: "postgres",
-  password: "2025",
-  database: "week4",
+  url: process.env.DATABASE_URL, 
+  ssl: process.env.DATABASE_URL
+    ? { rejectUnauthorized: false }
+    : false, 
   logging: false,
   synchronize: true,
   entities: [path.join(__dirname, "..", "entities/**/*.js")],
 });
 
-module.exports = db;
+export default db;
