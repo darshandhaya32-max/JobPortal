@@ -13,7 +13,7 @@ const Application = () => {
     qualification: "",
     yearOfPassing: "",
   });
-          const apiUrl = process.env.VITE_API_URL;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -53,7 +53,7 @@ const Application = () => {
           lastname: apply.lastName,
           qualification: apply.qualification,
           yop: apply.yearOfPassing,
-          internId:id
+          internId: id,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
