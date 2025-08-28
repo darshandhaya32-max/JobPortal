@@ -1,5 +1,4 @@
 const express = require("express");
-
 const {
   getPost,
   postes,
@@ -13,11 +12,12 @@ const { signinUser, loginUser } = require("../controllers/authControllers");
 const verifyToken = require("../middleware/verifyToken");
 const authorizeRoles = require("../middleware/authRoles");
 const validateApplcation = require("../middleware/verification");
+
 const router = express.Router();
 
 router.get("/home", getPost);
 router.get("/home/:id", getSinglePost);
-router.get("/myposts/:id",MyPosts);
+router.get("/myposts/:id", MyPosts);
 
 router.post("/signin", signinUser);
 router.post("/login", loginUser);
@@ -31,12 +31,6 @@ router.post(
   authorizeRoles("Appicants"),
   application
 );
-
-router.delete(
-  "/delete/:id",
-  verifyToken,
-  authorizeRoles("Recruiter"),
-  DeletePost
-);
+router.delete("/delete/:id", verifyToken, authorizeRoles("Recruiter"), DeletePost);
 
 module.exports = router;
