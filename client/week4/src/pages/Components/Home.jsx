@@ -6,7 +6,7 @@ import DisplayForm from "./Forms/DisplayForm";
 const Home = () => {
   const [data, setData] = useState([]);
     const apiUrl = import.meta.env.VITE_API_URL;
-console.log(apiUrl)
+
   useEffect(() => {
     const fetchitem = async () => {
       try {
@@ -17,7 +17,7 @@ console.log(apiUrl)
       }
     };
     fetchitem();
-  }, []);
+  }, [data]);
 
   
   const handleDelete = (id) => {
