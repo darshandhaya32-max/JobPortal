@@ -1,17 +1,17 @@
 const express = require("express");
-// const cors = require("cors");
+const cors = require("cors");
 const router = require("./Routes/appRoutes");
 const db = require("./config/db");
 
 const app = express();
-// app.use(
-//   cors({
-//     origin: ["http://localhost:5173", "http://127.0.0.1:5173","https://jobportal-1-53h9.onrender.com"],
-//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-//     credentials: true,
-//   })
-// );
-// app.use(cors())
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "http://127.0.0.1:5173","https://jobportal-1-53h9.onrender.com"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/api", router);

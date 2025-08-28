@@ -10,7 +10,7 @@ const MyPosts = () => {
   useEffect(() => {
     const fetchitem = async () => {
       try {
-        const res = await axios.get(`https://jobportal-0q8q.onrender.com/api/myposts/${id}`);
+        const res = await axios.get(`https://jobportal-j9ad.onrender.com/api/myposts/${id}`);
         setData(res.data || []);
       } catch (error) {
         console.error("❌ Fetch error:", error.message);

@@ -27,7 +27,7 @@ const Home = () => {
         if (conformation) {
           const token = localStorage.getItem("token");
           const result = await axios.delete(
-            `https://jobportal-0q8q.onrender.com/api/delete/${id}`,
+            `https://jobportal-j9ad.onrender.com/api/delete/${id}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
