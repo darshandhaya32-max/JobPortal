@@ -17,7 +17,7 @@ const Application = () => {
   useEffect(() => {
     const fetchsingle = async () => {
       try {
-        const result = await axios.get(`http://localhost:3000/api/home/${id}`);
+        const result = await axios.get(`https://jobportal-0q8q.onrender.com/api/home/${id}`);
         setSinglePost(result.data || []);
       } catch (error) {
         console.error("❌ Fetch error:", error.message);
@@ -45,7 +45,7 @@ const Application = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/application",
+        "https://jobportal-0q8q.onrender.com/api/application",
         {
           firstname: apply.firstName,
           lastname: apply.lastName,

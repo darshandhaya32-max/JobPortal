@@ -19,7 +19,7 @@ const Update = () => {
     const fetchPost = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`http://localhost:3000/api/home/${id}`, {
+        const res = await axios.get(`https://jobportal-0q8q.onrender.com/api/home/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -52,7 +52,7 @@ const Update = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.put(
-          `http://localhost:3000/api/edit/${id}`,
+          `https://jobportal-0q8q.onrender.com/api/edit/${id}`,
           {
             title: post.title,
             content: post.content,

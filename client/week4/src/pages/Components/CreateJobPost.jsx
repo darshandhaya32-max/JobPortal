@@ -42,7 +42,7 @@ const CreateJobPost = () => {
     }
   }
         const res = await axios.post(
-          "http://localhost:3000/api/posts",
+          "https://jobportal-0q8q.onrender.com/api/posts",
           {
             title: post.title,
             content: post.content,

@@ -8,7 +8,7 @@ const Home = () => {
   useEffect(() => {
     const fetchitem = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/home");
+        const res = await axios.get("https://jobportal-0q8q.onrender.com/api/home");
         setData(res.data || []);
       } catch (error) {
         console.error("❌ Fetch error:", error.message);
@@ -27,7 +27,7 @@ const Home = () => {
         if (conformation) {
           const token = localStorage.getItem("token");
           const result = await axios.delete(
-            `http://localhost:3000/api/delete/${id}`,
+            `https://jobportal-0q8q.onrender.com/api/delete/${id}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,

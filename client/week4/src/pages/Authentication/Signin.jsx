@@ -13,7 +13,7 @@ const Signin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await axios.post("http://localhost:3000/api/signin", {
+      const result = await axios.post("https://jobportal-0q8q.onrender.com/api/signin", {
         username: signinData.username,
         email: signinData.email,
         password: signinData.password,
