@@ -57,7 +57,7 @@ const DisplayForm = ({handleDelete,data})=> {
                     Edit
                   </button>
                 )}
-              {userType === "Appicants" && (
+              {userType === "Applicants" && (
                 <button
                   className="px-6 py-2 bg-blue-600 hover:bg-blue-400 text-white font-medium rounded-lg"
                   onClick={() => navigate(`/Apply/${item.id}`)}

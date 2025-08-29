@@ -51,7 +51,7 @@ const Application = () => {
 
     try {
       const res = await axios.post(
-        `${apiUrl}/application`,
+        `${apiUrl}/application/`,
         {
           firstname: apply.firstName,
           lastname: apply.lastName,
